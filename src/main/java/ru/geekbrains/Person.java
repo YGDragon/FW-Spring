@@ -1,29 +1,37 @@
 package ru.geekbrains;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-
-import java.io.*;
-
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class Person {
-    private final  static String PATH = "src\\main\\java\\resources\\person.json";
 
     private String firstname;
     private String lastname;
-    private int age;
+    private Integer age;
+
+    //region Constructors
+    public Person() {
+    }
+
+    public Person(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public Person(String firstname, String lastname) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
 
     public Person(String firstname, String lastname, int age) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.age = age;
     }
+    //endregion
 
     //region Getters & Setters
-
     public String getFirstname() {
         return firstname;
     }
@@ -40,76 +48,35 @@ public class Person {
         this.lastname = lastname;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
-
     //endregion
 
     //region Override methods
 
+    // метод toString с использованием commons-lang3
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-                .append("firstname", firstname)
-                .append("lastname", lastname)
-                .append("age", age)
-                .toString();
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.NO_CLASS_NAME_STYLE);
     }
 
+    // метод equals с использованием commons-lang3
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Person person = (Person) o;
-
-        return new EqualsBuilder()
-                .append(age, person.age)
-                .append(firstname, person.firstname)
-                .append(lastname, person.lastname).isEquals();
+    public boolean equals(Object obj) {
+        return EqualsBuilder.reflectionEquals(this, obj);
     }
 
+    // метод hashCode с использованием commons-lang3
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37)
-                .append(firstname)
-                .append(lastname)
-                .append(age).toHashCode();
+        return HashCodeBuilder.reflectionHashCode(this);
     }
 
     //endregion
 
-    public void writeJSON(Person person) {
-        try (FileWriter writer = new FileWriter(PATH)) {
-
-            GsonBuilder builder = new GsonBuilder();
-            Gson gson = builder.create();
-
-            writer.write(gson.toJson(person));
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public Person readJSON() {
-        try (FileReader reader = new FileReader(PATH)) {
-
-            BufferedReader bufferedReader = new BufferedReader(reader);
-
-            GsonBuilder builder = new GsonBuilder();
-            Gson gson = builder.create();
-            return gson.fromJson(bufferedReader, Person.class);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
 }

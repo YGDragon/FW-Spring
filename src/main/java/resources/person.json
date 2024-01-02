@@ -1,1 +1,26 @@
-{"firstname":"Father","lastname":" Frost","age":180}
+[
+  {
+    "firstname": "Евгений",
+    "lastname": "Адамов",
+    "age": 53
+  },
+  {
+    "firstname": "Виктор"
+  },
+  {
+    "firstname": "Инна",
+    "lastname": "Белая"
+  },
+  {
+    "firstname": "Павел",
+    "lastname": "Черный",
+    "age": 37
+  },
+  {
+    "firstname": "Юрий",
+    "lastname": "Грэй"
+  },
+  {
+    "firstname": "Мария"
+  }
+]
