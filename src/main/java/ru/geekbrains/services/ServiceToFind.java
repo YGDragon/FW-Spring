@@ -8,10 +8,10 @@ import java.util.List;
 
 public class ServiceToFind {
 
-    /* Поиск персон в списке по имени
+    /* Поиск персон в массиве по имени
      * с использованием класса StringUtils */
     public List<Person> findByFirstName(String firstName, Person[] listPerson) {
-        System.out.printf("Поиск персон по фамилии %s в списке >> ", firstName);
+        System.out.printf("Поиск персон по имени %s в списке >> ", firstName);
         List<Person> persons = Arrays.stream(listPerson)
                 .filter(person -> StringUtils.equals(firstName, person.getFirstname()))
                 .toList();
@@ -25,7 +25,7 @@ public class ServiceToFind {
         return persons;
     }
 
-    /* Поиск персон в списке по фамилии
+    /* Поиск персон в массиве по фамилии
      * с использованием класса StringUtils */
     public List<Person> findByLastName(String lastName, Person[] listPerson) {
         System.out.printf("Поиск персон по фамилии %s в списке >> ", lastName);

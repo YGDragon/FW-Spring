@@ -27,9 +27,9 @@ public class ServiceJSON {
     }
 
     /**
-     * Чтение объекта класса из файла формата JSON
+     * Чтение файла формата JSON
      *
-     * @return Object
+     * @return Person[]
      */
     public Person[] readFromJsonFile(String path) {
         Gson gson = new Gson();

@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class ServiceToCheck {
 
-    // Проверка заполнения данных о персонах
+    /* Проверка заполнения данных о персонах */
     public List<Person> checkFillData(Person[] personArray) {
         System.out.println("Вывод списка персона с незаполненными данными: ");
         return Arrays.stream(personArray)
@@ -19,7 +19,7 @@ public class ServiceToCheck {
                 .toList();
     }
 
-    // Формирование списка HashCode персон из массива списка
+    /* Формирование списка HashCode персон из массива списка */
     public TreeMap<String, Integer> getListHC(Person[] personArray) {
         System.out.println("Вывод списка HashCode всех персон из массива: ");
         final int[] count = {1};

@@ -47,7 +47,7 @@ public class AppTest {
         List<Person> find1 = checkPersonService.findByFirstName(firstName, personArray);
         find1.forEach(System.out::println);
 
-        /* Проверка совпадения */
+        /* Проверка совпадения фамилии */
         System.out.println();
         String lastName = "Белая";
         List<Person> find2 = checkPersonService.findByLastName(lastName, personArray);
@@ -64,7 +64,7 @@ public class AppTest {
         List<Person> check1 = serviceToCheck.checkFillData(personArray);
         check1.forEach(System.out::println);
 
-        /* Получение списка HashCode всех персон из массива */
+        /* Получение HashCode всех персон из массива */
         System.out.println();
         TreeMap<String, Integer> check2 = serviceToCheck.getListHC(personArray);
         check2.entrySet().forEach(System.out::println);
